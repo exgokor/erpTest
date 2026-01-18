@@ -1,17 +1,39 @@
 @import "tailwindcss";
 
 :root {
+  /* PRD 컬러 스킴 */
+  --primary: #2563EB;
+  --secondary: #10B981;
+  --accent: #F59E0B;
+  --neutral-dark: #1F2937;
+  --neutral-light: #F9FAFB;
+
   --background: #ffffff;
   --foreground: #171717;
+
+  /* 타이포그래피 */
+  --font-size-h1: 3rem;
+  --font-size-h2: 2.25rem;
+  --font-size-body: 1rem;
+
+  /* 레이아웃 */
+  --max-width: 1200px;
+  --section-spacing: 5rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-neutral-dark: var(--neutral-dark);
+  --color-neutral-light: var(--neutral-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* 다크모드 */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +41,39 @@
   }
 }
 
+/* 다크모드 클래스 기반 (토글용) */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* 반응형 타이포그래피 */
+@media (max-width: 768px) {
+  :root {
+    --font-size-h1: 2rem;
+    --font-size-h2: 1.75rem;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 컨테이너 */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* 섹션 기본 스타일 */
+section {
+  padding: var(--section-spacing) 0;
 }
